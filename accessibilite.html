@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibilité — PRESCIENCE — Le Musée des Prophéties de la Bible</title>
+  <meta name="description" content="Mesures d&#x27;accessibilité et limites connues du musée PRESCIENCE.">
+  <meta name="theme-color" content="#070A12">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/jpeg" href="/assets/img/favicon.jpg">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <header class="site-header">
+    <div class="barre">
+      <a href="/" aria-label="PRESCIENCE — accueil">
+        <p class="wordmark">PRESCIENCE</p>
+        <p class="wordmark-sub">Le Musée des Prophéties de la Bible</p>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false"
+              aria-controls="navigation-principale">Menu</button>
+      <nav class="nav-principale" id="navigation-principale"
+           aria-label="Navigation principale">
+        <ul>
+      <li><a href="/">Accueil</a></li>
+      <li><a href="/salles/">Les salles</a></li>
+      <li><a href="/preuves/">Preuves</a></li>
+      <li><a href="/glossaire.html">Glossaire</a></li>
+      <li><a href="/a-propos.html">À propos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="contenu">
+<nav class="fil-ariane" aria-label="Fil d'Ariane">
+  <a href="/">Accueil</a> <span aria-hidden="true">/</span> Accessibilité
+</nav>
+<section>
+  <p class="sur-titre">Un musée pour tous</p>
+  <h1>Accessibilité du musée</h1>
+  <p>PRESCIENCE est conçu pour être lisible par le plus grand nombre, y compris avec les
+  technologies d'assistance. Cette page décrit les mesures mises en œuvre et les limites
+  connues, sans exagérer un niveau de conformité qui n'a pas encore été audité
+  officiellement.</p>
+
+  <div class="titre-section"><h2>Mesures appliquées</h2></div>
+  <ul class="liste-riche">
+    <li>Un lien « Aller au contenu principal » est placé en première position de chaque page et devient visible à la prise de focus clavier.</li>
+    <li>La structure des pages suit un ordre de titres cohérent, du titre principal aux sous-sections.</li>
+    <li>Toutes les images porteuses de sens reçoivent une description alternative ; les images purement décoratives sont ignorées par les outils d'assistance.</li>
+    <li>Les contrastes de texte sont calculés sur des fonds sombres avec des lettres claires, et les indicateurs de focus ne reposent jamais sur la seule couleur.</li>
+    <li>La navigation est intégralement accessible au clavier, avec un contour de focus visible.</li>
+    <li>Le menu mobile se commande au clavier, y compris sa fermeture par la touche Échap.</li>
+    <li>Les badges de vérification associent une couleur, un mot et une pastille : l'information ne dépend pas d'une teinte.</li>
+    <li>Les animations respectent la préférence système « réduire les animations » (prefers-reduced-motion).</li>
+    <li>La mise en page s'adapte du petit écran de téléphone au grand écran d'ordinateur, sans zoom horizontal forcé.</li>
+    <li>Les polices de caractères sont hébergées sur le site lui-même : aucun serveur tiers n'est appelé, aucune donnée de navigation n'est transmise.</li>
+  </ul>
+
+  <div class="titre-section"><h2>Limites connues</h2></div>
+  <p>Les reconstitutions numériques sont des illustrations, pas des documents d'époque :
+  elles portent toutes la mention « Reconstitution numérique ». Les contenus audio à venir
+  seront accompagnés de leur transcription textuelle complète. Les cartes et frises
+  interactives futures disposeront d'une équivalence sous forme de tableau ou de liste.</p>
+
+  <div class="titre-section"><h2>Signaler une difficulté</h2></div>
+  <p>Tout obstacle rencontré — contraste insuffisant, image sans description, navigation
+  difficile — pourra être signalé dès l'ouverture complète du parcours. Chaque signalement
+  sera traité comme une correction prioritaire du générateur de pages, afin que la
+  correction profite automatiquement à toutes les salles.</p>
+</section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="footer-corps">
+      <div>
+        <h2>PRESCIENCE</h2>
+        <p class="muted">Un musée virtuel statique, en langue française, qui confronte
+        les annonces antiques aux sources de l'histoire. Rien d'inventé, aucune date
+        future, le débat toujours indiqué.</p>
+      </div>
+      <nav aria-label="Explorer">
+        <h2>Explorer</h2>
+        <ul>
+          <li><a href="/salles/">Les dix-sept salles</a></li>
+          <li><a href="/preuves/">Méthode et preuves</a></li>
+          <li><a href="/glossaire.html">Glossaire</a></li>
+          <li><a href="/sources.html">Sources publiques</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Le musée">
+        <h2>Le musée</h2>
+        <ul>
+          <li><a href="/a-propos.html">À propos</a></li>
+          <li><a href="/accessibilite.html">Accessibilité</a></li>
+          <li><a href="/plan-du-site.html">Plan du site</a></li>
+          <li><a href="/mentions-legales.html">Mentions légales</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bas muted">
+      © <span data-annee-courante></span> PRESCIENCE — site statique, sans traceur, sans ressource externe.
+    </div>
+  </footer>
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>

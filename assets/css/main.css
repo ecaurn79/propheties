@@ -1,0 +1,529 @@
+/* ==========================================================================
+   PRESCIENCE — design system E03
+   Palette : nuit d'encre, lapis, or ancien, sable, terre cuite, turquoise.
+   Polices auto-hébergées (R13) : Cormorant Garamond, EB Garamond, Inter.
+   Aucune ressource externe, aucun SVG/PNG (R08).
+   ========================================================================== */
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/assets/fonts/CormorantGaramond.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/assets/fonts/EBGaramond.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --nuit-encre: #070A12;
+  --nuit-clair: #0D1424;
+  --lapis: #1E3A8A;
+  --or-ancien: #D4AF37;
+  --or-pale: #E6CE83;
+  --sable: #E8D9B5;
+  --terre-cuite: #A2482B;
+  --turquoise: #3FA7A0;
+  --blanc-lumiere: #F7F3EA;
+  --gris-bord: rgba(232, 217, 181, 0.18);
+  --fond: var(--nuit-encre);
+  --texte: var(--sable);
+  --texte-fort: var(--blanc-lumiere);
+  --accent: var(--or-ancien);
+  --police-titres: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --police-texte: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --police-versets: "EB Garamond", Georgia, serif;
+  --largeur-lecture: 68rem;
+  --rayon: 8px;
+  --ombre-douce: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --transition: 260ms ease;
+}
+
+* { box-sizing: border-box; }
+html { scrollbar-gutter: stable; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1100px 600px at 80% -10%, rgba(30, 58, 138, 0.22), transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(63, 167, 160, 0.08), transparent 55%),
+    var(--fond);
+  color: var(--texte);
+  font-family: var(--police-texte);
+  font-size: 1.02rem;
+  line-height: 1.65;
+  min-height: 100svh;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--or-pale); text-decoration: none; transition: color var(--transition); }
+a:hover, a:focus { color: var(--blanc-lumiere); }
+p { margin: 0 0 1.1rem; }
+h1, h2, h3, h4 {
+  font-family: var(--police-titres);
+  color: var(--texte-fort);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); letter-spacing: 0.02em; }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
+h3 { font-size: 1.35rem; }
+
+.skip-link {
+  position: absolute; left: -999px; top: 0;
+  background: var(--or-ancien); color: var(--nuit-encre);
+  padding: 0.7rem 1.1rem; z-index: 200; font-weight: 600;
+  border-radius: 0 0 var(--rayon) 0;
+}
+.skip-link:focus { left: 0; }
+:focus-visible { outline: 2px solid var(--turquoise); outline-offset: 3px; }
+
+/* --------------------------------------------------------------------------
+   En-tête et navigation
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(7, 10, 18, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+}
+.barre {
+  width: min(100% - 2rem, var(--largeur-lecture));
+  margin-inline: auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; padding: 0.85rem 0;
+}
+.wordmark {
+  margin: 0; font-family: var(--police-titres);
+  font-size: 1.55rem; letter-spacing: 0.3em; text-indent: 0.3em;
+  color: var(--accent); line-height: 1;
+}
+.wordmark-sub {
+  margin: 0.15rem 0 0; font-size: 0.72rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--sable);
+}
+.nav-toggle {
+  display: none;
+  background: transparent; color: var(--or-ancien);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: var(--rayon); padding: 0.55rem 0.9rem;
+  font: inherit; cursor: pointer;
+}
+.nav-principale ul {
+  display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem;
+  list-style: none; margin: 0; padding: 0;
+}
+.nav-principale a {
+  color: var(--sable); font-size: 0.92rem; letter-spacing: 0.04em;
+  padding: 0.35rem 0.15rem; border-bottom: 1px solid transparent;
+}
+.nav-principale a:hover, .nav-principale a[aria-current="page"] {
+  color: var(--blanc-lumiere); border-bottom-color: var(--or-ancien);
+}
+
+/* --------------------------------------------------------------------------
+   Mise en page générale
+   -------------------------------------------------------------------------- */
+main { width: min(100% - 2.5rem, var(--largeur-lecture)); margin-inline: auto; }
+section { padding: 3.2rem 0; }
+.titre-section {
+  display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.6rem;
+}
+.titre-section::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(90deg, rgba(212,175,55,0.55), transparent);
+}
+.sur-titre {
+  text-transform: uppercase; letter-spacing: 0.22em; font-size: 0.78rem;
+  color: var(--turquoise); margin-bottom: 0.6rem;
+}
+.texte-fort { color: var(--texte-fort); }
+.muted { color: rgba(232, 217, 181, 0.72); }
+
+/* --------------------------------------------------------------------------
+   Hero immersif
+   -------------------------------------------------------------------------- */
+.hero-immersif {
+  position: relative; min-height: 88svh;
+  display: grid; place-items: center; text-align: center;
+  padding: 6rem 1.5rem 5rem; overflow: hidden;
+  width: 100%;
+}
+.hero-immersif .fond {
+  position: absolute; inset: 0; z-index: -1;
+}
+.hero-immersif .fond img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+}
+.hero-immersif .fond::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7,10,18,0.62) 0%, rgba(7,10,18,0.55) 45%, rgba(7,10,18,0.92) 100%),
+    radial-gradient(70% 55% at 50% 45%, rgba(7,10,18,0.25), rgba(7,10,18,0.75));
+}
+.hero-contenu { max-width: 54rem; }
+.hero-contenu h1 { text-shadow: 0 6px 30px rgba(0,0,0,0.7); }
+.hero-slogan {
+  font-family: var(--police-versets); font-style: italic;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem); color: var(--or-pale);
+  margin: 0 0 2rem;
+}
+.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2.2rem; }
+
+.bouton {
+  display: inline-block; padding: 0.85rem 1.7rem;
+  border-radius: var(--rayon); font-weight: 600; letter-spacing: 0.05em;
+  border: 1px solid var(--or-ancien); transition: all var(--transition);
+}
+.bouton-plein { background: var(--or-ancien); color: var(--nuit-encre); }
+.bouton-plein:hover { background: var(--or-pale); color: var(--nuit-encre); }
+.bouton-contour { color: var(--blanc-lumiere); background: rgba(7,10,18,0.4); }
+.bouton-contour:hover { border-color: var(--blanc-lumiere); color: var(--blanc-lumiere); }
+
+/* --------------------------------------------------------------------------
+   Versets et citations
+   -------------------------------------------------------------------------- */
+.bloc-verset {
+  border-left: 3px solid var(--or-ancien);
+  padding: 0.4rem 0 0.4rem 1.4rem; margin: 1.6rem 0;
+  background: linear-gradient(90deg, rgba(212,175,55,0.07), transparent);
+}
+.verset {
+  font-family: var(--police-versets);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  color: var(--blanc-lumiere); margin: 0 0 0.5rem;
+}
+.reference { color: var(--turquoise); font-size: 0.92rem; letter-spacing: 0.06em; margin: 0; }
+
+/* --------------------------------------------------------------------------
+   Cartes et grilles
+   -------------------------------------------------------------------------- */
+.grille { display: grid; gap: 1.4rem; }
+.grille-3 { grid-template-columns: repeat(3, 1fr); }
+.grille-2 { grid-template-columns: repeat(2, 1fr); }
+.carte {
+  background: linear-gradient(180deg, rgba(29,38,58,0.72), rgba(13,20,36,0.72));
+  border: 1px solid var(--gris-bord);
+  border-radius: var(--rayon); padding: 1.6rem;
+  transition: transform var(--transition), border-color var(--transition);
+}
+.carte:hover { transform: translateY(-4px); border-color: rgba(212,175,55,0.55); }
+.carte-cliquable { padding: 0; }
+.carte-lien { display: block; padding: 1.6rem; height: 100%; color: inherit; }
+.carte-lien:hover { color: inherit; }
+.carte-lien h3 { margin-bottom: 0; }
+.carte h3 { margin-top: 0.3rem; }
+.carte-image { padding: 0; overflow: hidden; }
+.carte-image .visual { aspect-ratio: 16 / 9; overflow: hidden; }
+.carte-image .visual img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms ease; }
+.carte-image:hover .visual img { transform: scale(1.04); }
+.carte-image .corps { padding: 1.4rem 1.6rem 1.7rem; }
+.mention-reconstitution {
+  font-size: 0.74rem; color: rgba(232,217,181,0.62);
+  letter-spacing: 0.06em; margin: 0.55rem 0 0;
+}
+.numero-salle {
+  font-family: var(--police-titres); color: var(--or-ancien);
+  font-size: 1.05rem; letter-spacing: 0.18em;
+}
+.etat-bientot {
+  display: inline-block; font-size: 0.72rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--sable);
+  border: 1px solid var(--gris-bord); border-radius: 999px;
+  padding: 0.25rem 0.75rem; margin-top: 0.8rem;
+}
+
+/* --------------------------------------------------------------------------
+   Badges de niveau de preuve (R05)
+   -------------------------------------------------------------------------- */
+.badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; border-radius: 999px; padding: 0.3rem 0.8rem;
+}
+.badge-verifie { background: rgba(63,167,160,0.16); color: #7fd6cf; border: 1px solid rgba(63,167,160,0.5); }
+.badge-debattu { background: rgba(162,72,43,0.18); color: #e08a6e; border: 1px solid rgba(162,72,43,0.55); }
+.badge-a-verifier { background: rgba(232,217,181,0.1); color: var(--sable); border: 1px solid var(--gris-bord); }
+.pastille { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: currentColor; }
+
+/* --------------------------------------------------------------------------
+   Tableaux et listes de méthodologie
+   -------------------------------------------------------------------------- */
+.tableau { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.tableau th, .tableau td {
+  text-align: left; padding: 0.85rem 0.9rem;
+  border-bottom: 1px solid var(--gris-bord); vertical-align: top;
+}
+.tableau th {
+  color: var(--or-pale); font-family: var(--police-titres);
+  font-size: 1.05rem; letter-spacing: 0.04em;
+}
+.liste-riche { list-style: none; padding: 0; margin: 0; }
+.liste-riche li {
+  padding: 0.9rem 0 0.9rem 1.8rem; position: relative;
+  border-bottom: 1px solid rgba(232,217,181,0.1);
+}
+.liste-riche li::before {
+  content: ""; position: absolute; left: 0.2rem; top: 1.45rem;
+  width: 0.55rem; height: 0.55rem; background: var(--or-ancien);
+  transform: rotate(45deg);
+}
+
+/* --------------------------------------------------------------------------
+   Glossaire
+   -------------------------------------------------------------------------- */
+.glossaire dt {
+  font-family: var(--police-titres); color: var(--or-pale);
+  font-size: 1.2rem; margin-top: 1.4rem;
+}
+.glossaire dd { margin: 0.3rem 0 0; padding-left: 0; }
+
+/* --------------------------------------------------------------------------
+   Pied de page
+   -------------------------------------------------------------------------- */
+.site-footer {
+  margin-top: 4rem; border-top: 1px solid rgba(212,175,55,0.2);
+  background: rgba(13,20,36,0.6);
+}
+.footer-corps {
+  width: min(100% - 2.5rem, var(--largeur-lecture));
+  margin-inline: auto; padding: 2.6rem 0 2.2rem;
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem;
+}
+.site-footer h2 { font-size: 1.15rem; color: var(--or-pale); }
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer li { margin-bottom: 0.5rem; font-size: 0.92rem; }
+.footer-bas {
+  border-top: 1px solid var(--gris-bord);
+  padding: 1.2rem 1.5rem; text-align: center; font-size: 0.84rem;
+}
+
+/* --------------------------------------------------------------------------
+   Divers
+   -------------------------------------------------------------------------- */
+.encadre {
+  border: 1px solid rgba(63,167,160,0.4); border-radius: var(--rayon);
+  background: rgba(63,167,160,0.07); padding: 1.3rem 1.5rem; margin: 1.8rem 0;
+}
+.fil-ariane {
+  font-size: 0.85rem; color: rgba(232,217,181,0.7);
+  padding: 1.1rem 0 0; letter-spacing: 0.04em;
+}
+.fil-ariane a { color: var(--sable); }
+.visuellement-cache {
+  position: absolute !important; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Composants de salle (E04, réutilisés par toutes les salles)
+   -------------------------------------------------------------------------- */
+.hero-salle {
+  position: relative; min-height: 58svh;
+  display: grid; place-items: end start;
+  padding: 7rem 1.5rem 3.5rem; overflow: hidden;
+  width: 100%;
+}
+.hero-salle .fond { position: absolute; inset: 0; z-index: -1; }
+.hero-salle .fond img { width: 100%; height: 100%; object-fit: cover; }
+.hero-salle .fond::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7,10,18,0.55) 0%, rgba(7,10,18,0.35) 40%, rgba(7,10,18,0.94) 100%),
+    linear-gradient(90deg, rgba(7,10,18,0.75), transparent 70%);
+}
+.hero-salle .hero-contenu { max-width: 46rem; text-align: left; }
+.hero-salle h1 { margin-bottom: 0.6rem; }
+.hero-salle .hero-slogan { margin-bottom: 0; }
+
+.critere {
+  position: relative; padding-top: 2.4rem;
+}
+.critere .chiffre {
+  position: absolute; top: 1.1rem; left: 1.6rem;
+  font-family: var(--police-titres); font-size: 2.2rem;
+  color: rgba(212, 175, 55, 0.55); line-height: 1;
+}
+.critere h3 { color: var(--or-pale); }
+
+.exemple-contraste {
+  display: grid; grid-template-columns: 1.15fr 1fr; gap: 0;
+  border: 1px solid var(--gris-bord); border-radius: var(--rayon);
+  overflow: hidden; background: rgba(13, 20, 36, 0.6);
+  margin: 1.8rem 0;
+}
+.exemple-contraste .visual { min-height: 100%; }
+.exemple-contraste .visual img { width: 100%; height: 100%; object-fit: cover; }
+.exemple-contraste .corps { padding: 1.8rem 2rem; }
+.exemple-contraste h3 { margin-top: 0.2rem; }
+
+.preuve-fiche {
+  border: 1px solid rgba(63, 167, 160, 0.4);
+  border-radius: var(--rayon);
+  background: linear-gradient(180deg, rgba(63,167,160,0.08), rgba(13,20,36,0.6));
+  padding: 1.6rem 1.8rem; margin: 1.6rem 0;
+}
+.grille .preuve-fiche { margin: 0; height: 100%; }
+.grille .preuve-fiche h3 { font-size: 1.18rem; }
+.preuve-fiche .en-tete {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+.preuve-fiche .identifiant {
+  font-family: var(--police-titres); color: var(--or-pale);
+  letter-spacing: 0.12em; font-size: 0.95rem;
+}
+.meta-liste { list-style: none; padding: 0; margin: 0.8rem 0 0; font-size: 0.94rem; }
+.meta-liste li { padding: 0.35rem 0; border-bottom: 1px solid rgba(232,217,181,0.08); }
+.meta-liste .cle {
+  display: inline-block; min-width: 9.5rem;
+  color: var(--turquoise); letter-spacing: 0.05em;
+}
+
+.nav-salles {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;
+  margin-top: 3.5rem; padding-top: 2rem;
+  border-top: 1px solid rgba(212,175,55,0.22);
+}
+.nav-salles .cellule {
+  border: 1px solid var(--gris-bord); border-radius: var(--rayon);
+  padding: 1.2rem 1.5rem; transition: border-color var(--transition);
+}
+.nav-salles .cellule[aria-disabled="true"] { opacity: 0.55; }
+.nav-salles .cellule:not([aria-disabled="true"]):hover { border-color: rgba(212,175,55,0.55); }
+.nav-salles .sens {
+  display: block; font-size: 0.75rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--turquoise); margin-bottom: 0.3rem;
+}
+.nav-salles .suivante { text-align: right; }
+.nav-salles h2 { font-size: 1.2rem; margin: 0; }
+
+.sources-liste { list-style: none; padding: 0; margin: 1rem 0 0; }
+.sources-liste li {
+  padding: 0.9rem 0 0.9rem 1.8rem; position: relative;
+  border-bottom: 1px solid rgba(232,217,181,0.1); font-size: 0.95rem;
+}
+.sources-liste li::before {
+  content: ""; position: absolute; left: 0.25rem; top: 1.45rem;
+  width: 0.5rem; height: 0.5rem; background: var(--turquoise);
+  transform: rotate(45deg);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 920px) {
+  .grille-3 { grid-template-columns: repeat(2, 1fr); }
+  .footer-corps { grid-template-columns: 1fr 1fr; }
+  .exemple-contraste { grid-template-columns: 1fr; }
+  .exemple-contraste .visual { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 720px) {
+  .nav-toggle { display: inline-block; }
+  .nav-principale { display: none; width: 100%; }
+  .nav-principale.ouvert { display: block; }
+  .barre { flex-wrap: wrap; }
+  .nav-principale ul { flex-direction: column; gap: 0.2rem; padding: 0.6rem 0 1rem; }
+  .grille-3, .grille-2 { grid-template-columns: 1fr; }
+  .footer-corps { grid-template-columns: 1fr; }
+  .hero-immersif { min-height: 80svh; }
+  .hero-salle { min-height: 62svh; }
+  .nav-salles { grid-template-columns: 1fr; }
+  .nav-salles .suivante { text-align: left; }
+  .meta-liste .cle { display: block; min-width: 0; }
+}
+
+/* ==========================================================================
+   Module 3D de la statue de Daniel 2 (salle 07, E10) — canvas local three.js
+   ========================================================================== */
+.statue-3d {
+  border: 1px solid var(--gris-bord);
+  border-radius: 14px;
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(30, 58, 138, 0.22), transparent 60%),
+    var(--nuit-clair);
+  padding: 1rem;
+}
+.statue-canvas { width: 100%; height: clamp(360px, 52vh, 560px); }
+.statue-canvas canvas { display: block; width: 100% !important; height: 100% !important; cursor: grab; }
+.statue-canvas canvas:active { cursor: grabbing; }
+.statue-interface {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1rem;
+  margin-top: 0.8rem;
+  align-items: start;
+}
+.statue-boutons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.bouton-metal {
+  font-family: var(--police-texte);
+  font-size: 0.86rem;
+  color: var(--sable);
+  background: rgba(232, 217, 181, 0.06);
+  border: 1px solid var(--gris-bord);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.bouton-metal:hover, .bouton-metal:focus-visible {
+  border-color: var(--or-ancien);
+  color: var(--texte-fort);
+  outline: none;
+}
+.bouton-metal[aria-pressed="true"] {
+  background: rgba(212, 175, 55, 0.16);
+  border-color: var(--or-ancien);
+  color: var(--or-pale);
+}
+.bouton-pierre { border-style: dashed; }
+.statue-panneau {
+  background: rgba(7, 10, 18, 0.55);
+  border: 1px solid var(--gris-bord);
+  border-left: 3px solid var(--or-ancien);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  min-height: 9rem;
+}
+.statue-panneau h3 {
+  font-family: var(--police-titres);
+  color: var(--or-pale);
+  font-size: 1.15rem;
+  margin: 0 0 0.35rem;
+}
+.statue-panneau p { margin: 0.3rem 0; font-size: 0.92rem; line-height: 1.55; }
+.statue-panneau .panneau-puissance { color: var(--texte-fort); font-weight: 600; }
+.statue-panneau .panneau-date { color: var(--turquoise); font-size: 0.86rem; }
+.statue-panneau .panneau-reference {
+  color: var(--or-pale);
+  font-family: var(--police-versets);
+  font-style: italic;
+  font-size: 0.88rem;
+}
+@media (max-width: 820px) {
+  .statue-interface { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

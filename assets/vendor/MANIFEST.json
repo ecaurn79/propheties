@@ -1,0 +1,34 @@
+{
+  "principe": "Dependances de parcours auto-hebergees (R13) : aucun CDN, aucune requete externe a l'execution. Fichiers copies depuis node_modules apres npm installe, versions epinglees dans package.json. Ne pas editer a la main ; re-copier via le build (templates/vendor -> site/assets/vendor).",
+  "bibliotheques": [
+    {
+      "nom": "gsap",
+      "version": "3.12.5",
+      "fichiers": [
+        "gsap/gsap.min.js",
+        "gsap/ScrollTrigger.min.js"
+      ],
+      "licence": "GSAP Standard License : gratuite pour les sites et applications non factures (PRESCIENCE est un site statique gratuit, sans acces payant ni revente)",
+      "usage": "Animations d'entree et de parcours a partir de E04"
+    },
+    {
+      "nom": "lenis",
+      "version": "1.3.27",
+      "fichiers": [
+        "lenis/lenis.min.js"
+      ],
+      "licence": "MIT",
+      "usage": "Defilement doux, avec respect de prefers-reduced-motion"
+    },
+    {
+      "nom": "three",
+      "version": "0.186.1",
+      "fichiers": [
+        "three/three.module.js",
+        "three/three.core.js"
+      ],
+      "licence": "MIT",
+      "usage": "Rendu 3D de la statue de Daniel 2 en salle 07 (E10), maillages primitifs locaux sans texture externe, repli statique sans JS ; trois.core.js requis par l'import relatif du module"
+    }
+  ]
+}
